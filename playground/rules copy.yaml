@@ -1,0 +1,24 @@
+Fields:
+  - Name: "DealReference"
+    Description: "The customer contract deal reference"
+    ValidationFunction: "compose([mandatory(true), length(8)]);"
+    ValidationFunction: |
+      AllUpperCase = (writer) => (value) => 
+        if value.notUpperCase() 
+        then writer.write(“validation error, not all uppercase”) $> false 
+        else true
+
+# And use partial application - so you can do fancy stuff like
+#   Validation: (length = 8) => (value) => value.length == length
+
+# And therefore you can have higher level function called “EnsureLength” or something so
+#   Validation: EnsureLength(8) With EnsureLength = (length) => (value) => value.length == length
+
+# Validation: Compose([EnsureLength(8), Any(AllUpperCase())])
+
+# OOOOOHHHH what about if particular “rules” wanted to keep state, 
+# i.e. like a list of validation errors. 
+# So you could then weave a Writer type object into each,
+# e.g. AllUpperCase = (writer) => (value) => if value.notUpperCase() then writer.write(“validation error, not all uppercase”) $> false else true
+# meaning all the rules could run and append their validation errors to the same writer as they run, 
+# so that you get a single list at the end rather than 1 at a time

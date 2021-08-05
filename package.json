@@ -1,0 +1,16 @@
+{
+  "name": "rule-engine",
+  "version": "1.0.0",
+  "description": "[ \t{ \t\tName: \"DealReference\" \t\tDescription: \"The customer contract deal reference\" \t\tValidations:  \t\t\t[ \t\t\t\t{ \t\t\t\t\tName: \"RequiredLength\", \t\t\t\t\tDescription: \"Must equal a length of 8\", \t\t\t\t\tValidation: \" \t\t\t\t\t\treturn input.length == 8; \t\t\t\t\t\" \t\t\t\t}, \t\t\t\t{ \t\t\t\t\tSharedFunction: \"Mandatory\" \t\t\t\t} \t\t\t] \t} ]",
+  "main": "engine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "js-yaml": "^4.1.0"
+  }
+}
