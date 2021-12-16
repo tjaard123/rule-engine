@@ -1,17 +1,7 @@
 Fields:
   - Name: "DealReference"
     Description: "The customer contract deal reference"
-    Validations: 
-      - Name: "RequiredLength"
-        Description: "Must equal a length of 8"
-        Validation: |
-          console.log(`input: ${input}`);
-          return input.length == 8;
-      - SharedFunction: "Mandatory"
-  - Name: "CapturedDate"
+    Validation: "combine([length(3), allCaps, startWith('x')]);"
+  - Name: "BookingReference"
     Description: "The captured date"
-    Validations: 
-      - Name: "IsDate"
-        Description: "Must be a date"
-        Validation: >
-          return new Date(input);
+    Validation: combine([length(5)]);
